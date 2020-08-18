@@ -2,5 +2,288 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "credito": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/credito",
+      "sourceRoot": "projects/credito/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/credito",
+            "index": "projects/credito/src/index.html",
+            "main": "projects/credito/src/main.ts",
+            "polyfills": "projects/credito/src/polyfills.ts",
+            "tsConfig": "projects/credito/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/credito/src/favicon.ico",
+              "projects/credito/src/assets"
+            ],
+            "styles": [
+              "projects/credito/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/credito/src/environments/environment.ts",
+                  "with": "projects/credito/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "credito:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "credito:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "credito:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/credito/src/test.ts",
+            "polyfills": "projects/credito/src/polyfills.ts",
+            "tsConfig": "projects/credito/tsconfig.spec.json",
+            "karmaConfig": "projects/credito/karma.conf.js",
+            "assets": [
+              "projects/credito/src/favicon.ico",
+              "projects/credito/src/assets"
+            ],
+            "styles": [
+              "projects/credito/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/credito/tsconfig.app.json",
+              "projects/credito/tsconfig.spec.json",
+              "projects/credito/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/credito/e2e/protractor.conf.js",
+            "devServerTarget": "credito:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "credito:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "orcamento": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/orcamento",
+      "sourceRoot": "projects/orcamento/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/orcamento",
+            "index": "projects/orcamento/src/index.html",
+            "main": "projects/orcamento/src/main.ts",
+            "polyfills": "projects/orcamento/src/polyfills.ts",
+            "tsConfig": "projects/orcamento/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/orcamento/src/favicon.ico",
+              "projects/orcamento/src/assets"
+            ],
+            "styles": [
+              "projects/orcamento/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/orcamento/src/environments/environment.ts",
+                  "with": "projects/orcamento/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "orcamento:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "orcamento:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "orcamento:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/orcamento/src/test.ts",
+            "polyfills": "projects/orcamento/src/polyfills.ts",
+            "tsConfig": "projects/orcamento/tsconfig.spec.json",
+            "karmaConfig": "projects/orcamento/karma.conf.js",
+            "assets": [
+              "projects/orcamento/src/favicon.ico",
+              "projects/orcamento/src/assets"
+            ],
+            "styles": [
+              "projects/orcamento/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/orcamento/tsconfig.app.json",
+              "projects/orcamento/tsconfig.spec.json",
+              "projects/orcamento/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/orcamento/e2e/protractor.conf.js",
+            "devServerTarget": "orcamento:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "orcamento:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "projects/ui",
+      "sourceRoot": "projects/ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ui/tsconfig.lib.json",
+            "project": "projects/ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ui/src/test.ts",
+            "tsConfig": "projects/ui/tsconfig.spec.json",
+            "karmaConfig": "projects/ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ui/tsconfig.lib.json",
+              "projects/ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "credito"
 }

@@ -6,5 +6,24 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/credito/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/credito/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/orcamento/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/orcamento/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ui/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ui/tsconfig.spec.json"
+    }
+]
 }
