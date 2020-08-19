@@ -107,9 +107,7 @@
               "projects/credito/tsconfig.spec.json",
               "projects/credito/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -150,9 +148,7 @@
               "projects/orcamento/src/favicon.ico",
               "projects/orcamento/src/assets"
             ],
-            "styles": [
-              "projects/orcamento/src/styles.scss"
-            ],
+            "styles": ["projects/orcamento/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -214,9 +210,7 @@
               "projects/orcamento/src/favicon.ico",
               "projects/orcamento/src/assets"
             ],
-            "styles": [
-              "projects/orcamento/src/styles.scss"
-            ],
+            "styles": ["projects/orcamento/src/styles.scss"],
             "scripts": []
           }
         },
@@ -228,9 +222,7 @@
               "projects/orcamento/tsconfig.spec.json",
               "projects/orcamento/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
