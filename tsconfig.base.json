@@ -12,6 +12,8 @@
     "target": "es2015",
     "module": "es2020",
     "lib": ["es2018", "dom"],
-    "paths": {}
+    "paths": {
+      "utils": ["dist/utils/utils", "dist/utils"]
+    }
   }
 }
