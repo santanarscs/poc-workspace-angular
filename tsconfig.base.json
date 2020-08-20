@@ -17,7 +17,8 @@
       "dynamic-forms": [
         "dist/dynamic-forms/dynamic-forms",
         "dist/dynamic-forms"
-      ]
+      ],
+      "dynamic-form": ["dist/dynamic-form/dynamic-form", "dist/dynamic-form"]
     }
   }
 }

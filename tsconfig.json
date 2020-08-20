@@ -20,16 +20,10 @@
       "path": "./projects/orcamento/tsconfig.spec.json"
     },
     {
-      "path": "./projects/utils/tsconfig.lib.json"
+      "path": "./projects/dynamic-form/tsconfig.lib.json"
     },
     {
-      "path": "./projects/utils/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/dynamic-forms/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/dynamic-forms/tsconfig.spec.json"
+      "path": "./projects/dynamic-form/tsconfig.spec.json"
     }
   ]
 }
