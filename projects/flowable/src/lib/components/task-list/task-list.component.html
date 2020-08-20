@@ -1,0 +1,22 @@
+<div>
+  <mat-nav-list>
+    <a
+      *ngFor="let item of items"
+      mat-list-item
+      [class.list-item-active]="item === selectedItem"
+      (click)="onSelect(item)"
+    >
+      <mat-icon matListIcon>
+        assignment
+      </mat-icon>
+
+      <p mat-line>
+        {{ item.name }}
+      </p>
+
+      <p mat-line>
+        {{ item.description }}
+      </p>
+    </a>
+  </mat-nav-list>
+</div>

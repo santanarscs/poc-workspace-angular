@@ -24,6 +24,12 @@
     },
     {
       "path": "./projects/dynamic-form/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/flowable/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/flowable/tsconfig.spec.json"
     }
   ]
 }
