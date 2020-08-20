@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FieldConfig, DynamicFormComponent } from 'dynamic-form';
-
+import { QuestionService } from './question.service';
+import { take, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,97 +11,42 @@ import { FieldConfig, DynamicFormComponent } from 'dynamic-form';
 })
 export class AppComponent {
   title = 'credito';
-  regConfig: FieldConfig[] = [
-    {
-      type: 'input',
-      label: 'Username',
-      inputType: 'text',
-      name: 'name',
-      validations: [
-        {
-          name: 'required',
-          validator: Validators.required,
-          message: 'Name Required',
-        },
-        {
-          name: 'pattern',
-          validator: Validators.pattern('^[a-zA-Z]+$'),
-          message: 'Accept only text',
-        },
-      ],
-    },
-    {
-      type: 'input',
-      label: 'Email Address',
-      inputType: 'email',
-      name: 'email',
-      validations: [
-        {
-          name: 'required',
-          validator: Validators.required,
-          message: 'Email Required',
-        },
-        {
-          name: 'pattern',
-          validator: Validators.pattern(
-            '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'
-          ),
-          message: 'Invalid email',
-        },
-      ],
-    },
-    {
-      type: 'input',
-      label: 'Password',
-      inputType: 'password',
-      name: 'password',
-      validations: [
-        {
-          name: 'required',
-          validator: Validators.required,
-          message: 'Password Required',
-        },
-      ],
-    },
-    {
-      type: 'radiobutton',
-      label: 'Gender',
-      name: 'gender',
-      options: ['Male', 'Female'],
-      value: 'Male',
-    },
-    // {
-    //   type: 'date',
-    //   label: 'DOB',
-    //   name: 'dob',
-    //   validations: [
-    //     {
-    //       name: 'required',
-    //       validator: Validators.required,
-    //       message: 'Date of Birth Required',
-    //     },
-    //   ],
-    // },
-    {
-      type: 'select',
-      label: 'Country',
-      name: 'country',
-      value: 'UK',
-      options: ['India', 'UAE', 'UK', 'US'],
-    },
-    {
-      type: 'checkbox',
-      label: 'Accept Terms',
-      name: 'term',
-      value: true,
-    },
-    {
-      type: 'button',
-      label: 'Save',
-    },
-  ];
-
+  regConfig: FieldConfig[];
+  taskList$: Observable<any>;
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  constructor(private service: QuestionService) {
+    service
+      .getDataForm()
+      .pipe(
+        take(1),
+        map(response => {
+          return response.fields.map(
+            (res: { name: string; type: string; id: string }) => {
+              return {
+                type: 'input',
+                label: res.name,
+                inputType: res.type,
+                name: res.id,
+                validations: [],
+              };
+            }
+          );
+        })
+      )
+      .subscribe(
+        res =>
+          (this.regConfig = [
+            ...res,
+            { type: 'button', label: 'Executar Tarefa' },
+          ])
+      );
+
+    this.taskList$ = service.getTasks().pipe(
+      take(1),
+      map(res => res.data)
+    );
+  }
+
   submit(event): void {
     console.log(event);
   }

@@ -303,8 +303,10 @@
 
 <div class="content" role="main">
   <h2>{{ title }}</h2>
-  <lib-dynamic-form [fields]="regConfig" (submit)="submit($event)">
-  </lib-dynamic-form>
+  <div *ngIf="regConfig">
+    <lib-dynamic-form [fields]="regConfig" (submit)="submit($event)">
+    </lib-dynamic-form>
+  </div>
 
   <svg
     id="clouds"
