@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TasksService } from '../../services/tasks/tasks.service';
-
+import { TestService, DynamicFormService } from 'dynamic-form';
 @Component({
   selector: 'flow-task-list',
   templateUrl: './task-list.component.html',
@@ -12,7 +12,10 @@ export class TaskListComponent implements OnInit {
   selectedItem: any = null;
   subscriptions: Subscription[] = [];
 
-  constructor(private service: TasksService) {}
+  constructor(
+    private service: TasksService,
+    private testService: TestService
+  ) {}
 
   ngOnInit(): void {
     let modelSubscription: Subscription = new Subscription();

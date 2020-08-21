@@ -1,0 +1,15 @@
+<div *ngIf="task">
+  <h2>{{ task.name }}</h2>
+  <button mat-raised-button color="primary" (click)="onComplete()">
+    Completar
+  </button>
+</div>
+<!-- <pre>{{ form?.fields | json }}</pre> -->
+
+<lib-dynamic-form
+  autocomplete="off"
+  [className]="'crm-nested-grid-container'"
+  [formGroup]="taskFormGroup"
+  [model]="taskModel"
+>
+</lib-dynamic-form>
