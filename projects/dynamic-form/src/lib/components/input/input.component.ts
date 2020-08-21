@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  HostBinding,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldConfig } from '../../field.interface';
 @Component({
@@ -7,9 +14,23 @@ import { FieldConfig } from '../../field.interface';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit {
-  field: FieldConfig;
-  group: FormGroup;
+  @Input() formGroup: FormGroup;
+  @Input() model: any;
+
+  @Output() customEvent = new EventEmitter<any>();
+
+  @HostBinding('class') elementClass;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.elementClass = this.model.gridItemClass;
+  }
+  public iconSuffixClickHandler() {
+    this.customEvent.emit({
+      type: 'click',
+      id: this.model.id,
+      directive: 'matSuffix',
+      name: this.model.suffixIconName,
+    });
+  }
 }
