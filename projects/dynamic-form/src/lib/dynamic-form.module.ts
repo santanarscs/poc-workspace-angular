@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+// import { BrowserModule } from '@angular/platform-browser';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +12,8 @@ import { DateComponent } from './components/date/date.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.directive';
+import { DynamicFormService } from './services/dynamic-form.service';
+import { TestService } from './services/test.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,7 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
     CheckboxComponent,
     DynamicFieldDirective,
   ],
-  imports: [BrowserModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
   exports: [DynamicFormComponent],
   entryComponents: [
     InputComponent,
@@ -33,4 +37,13 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
     CheckboxComponent,
   ],
 })
-export class DynamicFormModule {}
+export class DynamicFormModule {
+  constructor() {}
+
+  static forRoot(): ModuleWithProviders<DynamicFormModule> {
+    return {
+      ngModule: DynamicFormModule,
+      providers: [TestService, DynamicFormService],
+    };
+  }
+}

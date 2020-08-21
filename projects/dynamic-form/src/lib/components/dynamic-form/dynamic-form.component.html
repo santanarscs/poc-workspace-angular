@@ -1,9 +1,14 @@
-<form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
+<form
+  [className]="className"
+  [autocomplete]="autocomplete"
+  [formGroup]="formGroup"
+>
   <ng-container
-    *ngFor="let field of fields"
+    *ngFor="let controlModel of formModel"
     dynamicField
-    [field]="field"
-    [group]="form"
+    [formGroup]="formGroup"
+    [model]="controlModel"
+    (customEvent)="onCustomEvent($event)"
   >
   </ng-container>
 </form>

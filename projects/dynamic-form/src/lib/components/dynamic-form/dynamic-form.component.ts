@@ -18,61 +18,20 @@ import { FieldConfig, Validator } from '../../field.interface';
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
 })
-export class DynamicFormComponent implements OnInit {
-  @Input() fields: FieldConfig[] = [];
+export class DynamicFormComponent {
+  @Input() formGroup: FormGroup;
 
-  @Output() submit: EventEmitter<any> = new EventEmitter<any>();
+  // tslint:disable-next-line:no-input-rename
+  @Input('model') formModel: any;
 
-  form: FormGroup;
+  @Input() autocomplete: string;
+  @Input() className: string;
+
+  @Output() customEvent = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder) {}
 
-  get value(): any {
-    return this.form.value;
-  }
-  bindValidations(validations: any[]): any {
-    if (validations.length > 0) {
-      const validList = [];
-      validations.forEach(valid => {
-        validList.push(valid.validator);
-      });
-      return Validators.compose(validList);
-    }
-    return null;
-  }
-
-  createControl(): FormGroup {
-    const group = this.fb.group({});
-
-    this.fields.forEach(field => {
-      if (field.type === 'button') {
-        return;
-      }
-      const control = this.fb.control(
-        field.value,
-        this.bindValidations(field.validations || [])
-      );
-      group.addControl(field.name, control);
-    });
-    return group;
-  }
-  validateAllFormFields(formGroup: FormGroup): void {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      control.markAsTouched({ onlySelf: true });
-    });
-  }
-
-  ngOnInit(): void {
-    this.form = this.createControl();
-  }
-  onSubmit(event: Event): void {
-    event.preventDefault();
-    event.stopPropagation();
-    if (this.form.valid) {
-      this.submit.emit(this.form.value);
-    } else {
-      this.validateAllFormFields(this.form);
-    }
+  public onCustomEvent(event: any) {
+    this.customEvent.emit(event);
   }
 }
